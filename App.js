@@ -14,31 +14,36 @@ state = {
 
 getWeather = async (latitude, longitude) => {
 
-const {data: {main:{temp}, weather}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
+const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
  
 
 this.setState({
   isLoading: false, 
-  temp: temp, 
-  conditions: weather[0].main});
+  temp: data.main.temp, 
+  conditions: data.weather[0].main});
 
 
-console.log(data);
+//console.log(data);
 }
 
 
 getLocation = async () => {
 try {
-const response = await Location.requestForegroundPermissionsAsync();
-console.log(response);
-  const {coords:{longitude, latitude}} = await Location.getCurrentPositionAsync();
-  console.log(coords);
+  const response = await Location.requestForegroundPermissionsAsync();
+  //console.log(response);
+  
+  //const {coords:{longitude, latitude}} = await Location.getCurrentPositionAsync({});
+  const location = await Location.getCurrentPositionAsync({});
+  //console.log(location.coords);
+  const {latitude, longitude} = location.coords;
+  //console.log(latitude, longitude);
   this.getWeather(latitude, longitude);
   
 // TODO: сделать запрос к API
 }catch(err) {
 
-Alert.alert("Невозможно получить геопозицию", "Попробуйте разрешить предоставление гео данных");
+Alert.alert("Невозможно получить геопозицию", "Попробуйте разрешить предоставление геоданных");
+//console.log(err);
 //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 }
 

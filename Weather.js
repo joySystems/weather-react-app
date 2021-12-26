@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const weatherOptions = {
@@ -84,8 +85,8 @@ return (
 <LinearGradient
 // Button Linear Gradient
     colors={weatherOptions[conditions].gradient}
-    style={styles.container}>
-
+    style={styles.container} >
+<StatusBar style="light" />
     <View style={styles.halfContainer}> 
         <Ionicons name={weatherOptions[conditions].iconName} size={96} color="white"/>
         <Text style={styles.temp}>{temp}°</Text>
@@ -153,5 +154,10 @@ textContainer:{
     alignItems:"flex-start",
 
 },
+
+statusBar:{
+
+    color:"#ffffff",
+}
 
 })

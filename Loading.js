@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 
@@ -23,7 +24,7 @@ container:{
     justifyContent: 'flex-end',
     //paddingHorizontal: 30,
     paddingVertical: 100,
-    backgroundColor: '#fdf6aa',
+    backgroundColor: '#000000',
     alignItems: 'center',
 
 },
