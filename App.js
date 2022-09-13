@@ -6,7 +6,7 @@ import Loading from './Loading';
 import Weather from './Weather';
 import axios from 'axios';
 
-const API_KEY = "e438b3395e81c11f2ffa4c3f7c1a264e";
+const API_KEY = "";
 export default class extends React.Component  {
 state = {
   isLoading: true,
